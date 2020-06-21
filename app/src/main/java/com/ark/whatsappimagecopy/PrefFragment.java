@@ -33,11 +33,22 @@ public class PrefFragment extends PreferenceFragmentCompat {
     ProgressDialog mProgressBar;
     Handler handler;
     static boolean moveFile=false;
+    Preference selectImagePref;
+    Preference outputFolderSelector;
+    public void updateImagesSelected( String msg)
+    {
+        selectImagePref.setSummary(msg);
+    }
+
+    public void updateOutputSelected(String msg){
+        outputFolderSelector.setSummary("Path selected: " +msg);
+    }
+
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         addPreferencesFromResource(R.xml.pref_main);
 
-        Preference selectImagePref = getPreferenceManager().findPreference("img");
+        selectImagePref = getPreferenceManager().findPreference("img");
         selectImagePref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
                 public boolean onPreferenceClick(Preference preference) {
@@ -46,8 +57,6 @@ public class PrefFragment extends PreferenceFragmentCompat {
                 ImagePicker.with(getActivity())
                         .setFolderMode(true)
                         .setFolderTitle("Select Images")
-                        .setRootDirectoryName(Config.CREATOR.getROOT_DIR_DCIM())
-                        .setDirectoryName("Image Picker")
                         .setMultipleMode(true)
                         .setShowNumberIndicator(true)
                         .setShowCamera(false)
@@ -59,7 +68,7 @@ public class PrefFragment extends PreferenceFragmentCompat {
             }
         });
 
-        Preference outputFolderSelector = getPreferenceManager().findPreference("output");
+        outputFolderSelector = getPreferenceManager().findPreference("output");
         outputFolderSelector.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
@@ -76,6 +85,11 @@ public class PrefFragment extends PreferenceFragmentCompat {
             public boolean onPreferenceChange(Preference preference, Object newValue) {
                 moveFile=(boolean)newValue;
                 System.out.println(moveFile);
+
+                if(moveFile)
+                    moveFiles.setSummary("Images will be moved.");
+                else
+                    moveFiles.setSummary("Images will be copied.");
                 return true;
             }
         });
@@ -101,7 +115,7 @@ public class PrefFragment extends PreferenceFragmentCompat {
                 mProgressBar.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
                 mProgressBar.show();
                 handler=new Handler();
-                new Worker(getActivity(),images,outputPath,mProgressBar,handler, moveFile).start();
+                new Worker((MainActivity)getActivity(),images,outputPath,mProgressBar,handler, moveFile).start();
                 return true;
             }
         });

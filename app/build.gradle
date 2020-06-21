@@ -32,6 +32,7 @@ dependencies {
     implementation 'com.github.iammohdzaki:KnotFileChooser-Android:1.0.3.1'
     compile "androidx.core:core-ktx:+"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'com.google.android.gms:play-services-ads:19.2.0'
 }
 repositories {
     mavenCentral()

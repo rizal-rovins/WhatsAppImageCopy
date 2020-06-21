@@ -28,9 +28,9 @@ public class Worker extends Thread {
     String outputPath;
     ProgressDialog progressDialog;
     Handler handler;
-    Activity activity;
+    MainActivity activity;
     boolean moveFile;
-    public Worker(Activity activity,ArrayList<Image> images, String outputPath, ProgressDialog progressDialog, Handler handler,boolean moveFile)
+    public Worker(MainActivity activity,ArrayList<Image> images, String outputPath, ProgressDialog progressDialog, Handler handler,boolean moveFile)
     {
         this.images= new ArrayList<Image>(images);
         this.outputPath=outputPath;
@@ -42,7 +42,7 @@ public class Worker extends Thread {
 
     public void run(){
         int count=0;
-        System.out.println("thread is running...");
+        System.out.println("Image copying thread is running...");
         System.out.println(images.size());
         for (Image x : images) {
             count++;
@@ -66,19 +66,21 @@ public class Worker extends Thread {
                     if(temp==images.size()) {
                         progressDialog.dismiss();
                     }
-                    else
-                    progressDialog.setProgress(temp*100/images.size());
+                    else {
+                        progressDialog.setProgress(temp * 100 / images.size());
+                        activity.onFinishCopy();
+                    }
 
                 }
             });
         }
 
         PrefFragment.images.clear();// clear the images array after copying
-        activity.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(new File(outputPath))));
-
         PrefFragment.outputPath="";
 
-        System.out.println("thread run method has ended...");
+        System.out.println("Image copying thread has ended...");
+
+
     }
 
     private void moveFile(File file, File dir) throws IOException {
@@ -97,6 +99,12 @@ public class Worker extends Thread {
             inputChannel.close();
             if(moveFile)
                 file.delete();
+
+
+            activity.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(newFile)));
+            System.out.println(" Sent intent to scan: "+ newFile.getName());
+
+
         } finally {
             if (inputChannel != null) inputChannel.close();
             if (outputChannel != null) outputChannel.close();
