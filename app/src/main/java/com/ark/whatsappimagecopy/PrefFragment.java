@@ -17,10 +17,6 @@ import androidx.preference.PreferenceFragmentCompat;
 import com.nguyenhoanglam.imagepicker.model.Config;
 import com.nguyenhoanglam.imagepicker.model.Image;
 import com.nguyenhoanglam.imagepicker.ui.imagepicker.ImagePicker;
-import com.zaphlabs.filechooser.KnotFileChooser;
-import com.zaphlabs.filechooser.Sorter;
-import com.zaphlabs.filechooser.utils.FileType;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.EmptyStackException;

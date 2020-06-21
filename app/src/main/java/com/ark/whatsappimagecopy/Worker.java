@@ -65,10 +65,11 @@ public class Worker extends Thread {
                 public void run() {
                     if(temp==images.size()) {
                         progressDialog.dismiss();
+                        activity.onFinishCopy();
                     }
                     else {
                         progressDialog.setProgress(temp * 100 / images.size());
-                        activity.onFinishCopy();
+
                     }
 
                 }

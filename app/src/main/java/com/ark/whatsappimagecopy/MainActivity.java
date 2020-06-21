@@ -4,17 +4,25 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import com.google.firebase.crashlytics.FirebaseCrashlytics;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.DocumentsContract;
 import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.RequestConfiguration;
+import com.google.firebase.crashlytics.CrashlyticsRegistrar;
+import com.google.firebase.crashlytics.internal.CrashlyticsNativeComponent;
+import com.google.firebase.crashlytics.internal.common.CrashlyticsCore;
+import com.google.firebase.crashlytics.internal.model.CrashlyticsReport;
 import com.nguyenhoanglam.imagepicker.model.Image;
 import com.nguyenhoanglam.imagepicker.ui.imagepicker.ImagePicker;
 
@@ -28,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
     void onFinishCopy()
     {
-        Toast.makeText(this,"Finished copying images!",Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,"Finished copying images!",Toast.LENGTH_LONG).show();
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +53,10 @@ public class MainActivity extends AppCompatActivity {
                 //.addTestDevice("C3C2620790FE540E8D008CF76CE8B71D")
                 .build();
         mAdView.loadAd(adRequest);
+
+        FirebaseCrashlytics.getInstance();
+        Intent i = new Intent(this, MyAppIntro.class);
+        startActivity(i);
 
     }
 
