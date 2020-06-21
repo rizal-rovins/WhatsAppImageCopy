@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout="@layout/activity_main" >
+    <PreferenceCategory android:title="Step 1"
+        app:iconSpaceReserved= "false">
+        <Preference
+
+            android:key="img"
+            android:summary="Select the images to be copied"
+            android:title="Select Images"
+            app:iconSpaceReserved= "false">
+
+        </Preference>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Step 2"
+        app:iconSpaceReserved= "false">
+        <Preference
+
+            android:key="output"
+            android:summary="Select the output directory where images will be copied."
+            android:title="Output Directory"
+            app:iconSpaceReserved= "false">
+
+        </Preference>
+        <SwitchPreference
+            android:key="move"
+            android:summary="Delete images from WhatsApp after copying?"
+            android:title="Move Images"
+            >
+
+        </SwitchPreference>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Step 3"
+        app:iconSpaceReserved= "false">
+        <Preference
+
+            android:key="start"
+            android:summary="Start copying images to the specified directory."
+            android:title="Start Copy"
+            app:iconSpaceReserved= "false">
+
+        </Preference>
+    </PreferenceCategory>
+
+</PreferenceScreen>
