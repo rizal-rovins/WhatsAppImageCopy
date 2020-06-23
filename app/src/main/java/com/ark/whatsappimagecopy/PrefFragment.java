@@ -1,25 +1,18 @@
 package com.ark.whatsappimagecopy;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
-import android.view.View;
 import android.widget.Toast;
-
 
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
-import com.nguyenhoanglam.imagepicker.model.Config;
 import com.nguyenhoanglam.imagepicker.model.Image;
 import com.nguyenhoanglam.imagepicker.ui.imagepicker.ImagePicker;
-import java.io.File;
+
 import java.util.ArrayList;
-import java.util.EmptyStackException;
 
 
 public class PrefFragment extends PreferenceFragmentCompat {

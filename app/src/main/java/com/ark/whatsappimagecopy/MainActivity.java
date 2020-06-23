@@ -1,34 +1,24 @@
 package com.ark.whatsappimagecopy;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import com.google.firebase.crashlytics.FirebaseCrashlytics;
+import android.content.SharedPreferences;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.provider.DocumentsContract;
 import android.util.Log;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.RequestConfiguration;
-import com.google.firebase.crashlytics.CrashlyticsRegistrar;
-import com.google.firebase.crashlytics.internal.CrashlyticsNativeComponent;
-import com.google.firebase.crashlytics.internal.common.CrashlyticsCore;
-import com.google.firebase.crashlytics.internal.model.CrashlyticsReport;
 import com.nguyenhoanglam.imagepicker.model.Image;
 import com.nguyenhoanglam.imagepicker.ui.imagepicker.ImagePicker;
 
 import java.net.URISyntaxException;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -54,10 +44,18 @@ public class MainActivity extends AppCompatActivity {
                 .build();
         mAdView.loadAd(adRequest);
 
-        FirebaseCrashlytics.getInstance();
-        Intent i = new Intent(this, MyAppIntro.class);
-        startActivity(i);
+        final String PREFS_NAME = "MyPrefsFile";
 
+        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+
+        if (settings.getBoolean("my_first_time", true)) {
+            //the app is being launched for first time, do something
+            Log.d("Comments", "First time");
+            settings.edit().putBoolean("my_first_time", false).commit();
+            Intent i = new Intent(this, MyAppIntro.class);
+            startActivity(i);
+
+        }
     }
 
     @Override

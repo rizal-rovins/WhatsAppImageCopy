@@ -18,7 +18,7 @@
         <Preference
 
             android:key="output"
-            android:summary="Select the output directory where images will be copied."
+            android:summary="Select the destination directory where images will be copied."
             android:title="Output Directory"
             app:iconSpaceReserved= "false">
 

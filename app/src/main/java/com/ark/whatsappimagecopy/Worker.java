@@ -1,15 +1,9 @@
 package com.ark.whatsappimagecopy;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Build;
-import android.os.FileUtils;
 import android.os.Handler;
-import android.util.Log;
-
-import androidx.annotation.RequiresApi;
 
 import com.nguyenhoanglam.imagepicker.model.Image;
 
@@ -17,8 +11,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 
