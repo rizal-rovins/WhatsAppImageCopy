@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "375058526503",
+    "project_id": "image-saver-85481",
+    "storage_bucket": "image-saver-85481.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:375058526503:android:8157fb823a954a112f3902",
+        "android_client_info": {
+          "package_name": "com.ark.imgsaver"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "375058526503-p28t7nksma4oshh55evgo3mmqn87obph.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTxik_1ypDWvz6B6YhRyk5rv3ueaEWctc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "375058526503-p28t7nksma4oshh55evgo3mmqn87obph.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

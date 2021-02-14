@@ -25,7 +25,7 @@
         </Preference>
         <SwitchPreference
             android:key="move"
-            android:summary="Delete images from WhatsApp after copying?"
+            android:summary="Delete images from original folder after copying?"
             android:title="Move Images"
             >
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.ark.whatsappimagecopy">
+    package="com.ark.imgsaver">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -16,13 +16,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="ExtraText,GoogleAppIndexingWarning">
-        <activity android:name=".MyAppIntro"></activity>
+        <activity android:name="com.ark.imgsaver.MyAppIntro"></activity>
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3690357492073975~2068197000" />
+            android:value="ca-app-pub-3690357492073975~3429270045" />
 
-        <activity android:name=".MainActivity">
+        <activity android:name="com.ark.imgsaver.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
